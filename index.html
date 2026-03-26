@@ -3,24 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>our photos</title>
+<title>Nir & Agam</title>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --cream: #f2ead8;
-    --warm-dark: #2a1f0e;
-    --brown-mid: #7a5c35;
-    --brown-light: #c4a068;
-    --stamp-orange: #e8920a;
-    --stamp-glow: rgba(232,146,10,0.5);
-    --film-edge: #F5C689;
-  }
-
   html, body {
     height: 100%;
-    background: var(--film-edge);
+    background: #F5C689;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,72 +19,25 @@
   }
 
   .film-strip {
-    position: relative;
     width: min(360px, 92vw);
   }
 
-  .sprocket-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 10px;
-    background: var(--film-edge);
-  }
-
-  .sprocket {
-    width: 14px;
-    height: 10px;
-    border: 1.5px solid #c9965a;
-    border-radius: 2px;
-    background: #e8b070;
-  }
-
-  .film-label-top {
-    background: var(--film-edge);
-    padding: 4px 14px 2px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .kodak-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: #a0600a;
+  .love-text {
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    color: #a06828;
     letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-
-  .iso-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: #c08840;
-    letter-spacing: 2px;
+    text-align: center;
+    padding: 0 0 10px;
   }
 
   .photo-wrapper {
-    background: var(--cream);
-    padding: 18px 18px 52px 18px;
+    background: #fff;
+    padding: 14px 14px 44px 14px;
     position: relative;
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  .photo-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(100,70,20,0.025) 3px,
-        rgba(100,70,20,0.025) 4px
-      );
-    pointer-events: none;
-    z-index: 3;
   }
 
   .photo-inner {
@@ -112,14 +55,12 @@
     transition: opacity 0.6s ease;
   }
 
-  .photo-inner img.loading {
-    opacity: 0;
-  }
+  .photo-inner img.loading { opacity: 0; }
 
   .vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(30,18,5,0.55) 100%);
+    background: radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(30,18,5,0.45) 100%);
     pointer-events: none;
     z-index: 2;
   }
@@ -136,64 +77,29 @@
 
   .date-stamp {
     position: absolute;
-    bottom: 12px;
-    right: 14px;
+    bottom: 10px;
+    right: 12px;
     font-family: 'DM Mono', monospace;
     font-size: 15px;
-    font-weight: 400;
-    color: var(--stamp-orange);
+    color: #e8920a;
     letter-spacing: 1.5px;
-    text-shadow: 0 0 10px var(--stamp-glow), 0 0 20px var(--stamp-glow);
+    text-shadow: 0 0 10px rgba(232,146,10,0.5), 0 0 20px rgba(232,146,10,0.5);
     z-index: 4;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s ease 0.5s;
   }
 
-  .date-stamp.visible {
-    opacity: 1;
-  }
+  .date-stamp.visible { opacity: 1; }
 
-  .film-meta {
-    position: absolute;
-    bottom: 14px;
-    left: 18px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--brown-mid);
-    letter-spacing: 1.5px;
-    z-index: 4;
-  }
-
-  .film-bottom {
-    background: var(--film-edge);
-    padding: 2px 14px 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .frame-counter {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: #a06828;
-    letter-spacing: 2px;
-  }
-
-  .advance-btn {
-    background: none;
-    border: none;
+  .names-text {
     font-family: 'Special Elite', cursive;
-    font-size: 10px;
+    font-size: 12px;
     color: #a06828;
     letter-spacing: 2px;
-    cursor: pointer;
-    text-transform: uppercase;
-    padding: 4px 0;
-    -webkit-tap-highlight-color: transparent;
+    text-align: center;
+    padding: 10px 0 0;
   }
-
-  .advance-btn:active { opacity: 0.6; }
 
   .loading-state {
     position: absolute;
@@ -206,8 +112,7 @@
   }
 
   .loading-dot {
-    width: 6px;
-    height: 6px;
+    width: 6px; height: 6px;
     border-radius: 50%;
     background: #7a5c35;
     margin: 0 3px;
@@ -230,16 +135,6 @@
     line-height: 1.8;
   }
 
-  .tap-hint {
-    text-align: center;
-    background: #F5C689;
-    padding: 8px;
-    font-family: 'Special Elite', cursive;
-    font-size: 11px;
-    color: #a06828;
-    letter-spacing: 2px;
-  }
-
   @media (prefers-color-scheme: dark) {
     html, body { background: #F5C689; }
   }
@@ -248,16 +143,7 @@
 <body>
 
 <div class="film-strip">
-  <div class="sprocket-row">
-    <div class="sprocket"></div><div class="sprocket"></div>
-    <div class="sprocket"></div><div class="sprocket"></div>
-    <div class="sprocket"></div><div class="sprocket"></div>
-  </div>
-
-  <div class="film-label-top">
-    <span class="kodak-text">Kodak Gold 200</span>
-    <span class="iso-text">ISO 200 ▪ 36exp</span>
-  </div>
+  <div class="love-text">I LOVE YOU</div>
 
   <div class="photo-wrapper" onclick="nextPhoto()">
     <div class="photo-inner" id="photoInner">
@@ -270,49 +156,29 @@
       <div class="grain"></div>
       <div class="date-stamp" id="dateStamp"></div>
     </div>
-    <div class="film-meta" id="filmMeta">―</div>
   </div>
 
-  <div class="film-bottom">
-    <span class="frame-counter" id="frameCounter">□ / □</span>
-    <button class="advance-btn" onclick="nextPhoto()">advance ▶</button>
-  </div>
-
-  <div class="sprocket-row">
-    <div class="sprocket"></div><div class="sprocket"></div>
-    <div class="sprocket"></div><div class="sprocket"></div>
-    <div class="sprocket"></div><div class="sprocket"></div>
-  </div>
-
-  <div class="tap-hint">tap photo to advance</div>
+  <div class="names-text">Nir &amp; Agam &mdash; 4 Years</div>
 </div>
 
 <script>
-  // ─────────────────────────────────────────────
-  // CONFIGURATION — replace with your actual IDs
-  // ─────────────────────────────────────────────
   const SHEET_ID = '1yZZ3Hm9fjZhjC3iiTLLpBloavIAmFl_FPFv6gRZl4Bw';
   const SHEET_NAME = 'Sheet1';
-  // ─────────────────────────────────────────────
-
   const STORAGE_KEY = 'memories_queue_v1';
 
-  let photos = [];
-  let queue = [];
-  let currentIndex = 0;
+  let photos = [], queue = [], currentIndex = 0;
 
   async function fetchPhotos() {
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
     const res = await fetch(url);
     const text = await res.text();
     const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
-    const rows = json.table.rows;
-    return rows
+    return json.table.rows
       .filter(r => r.c[0] && r.c[0].v)
       .map(r => {
         let url = r.c[0].v.trim();
-        const idMatch = url.match(/(?:id=|\/d\/)([a-zA-Z0-9_-]{10,})/);
-        if (idMatch) url = 'https://drive.google.com/thumbnail?id=' + idMatch[1] + '&sz=w1200';
+        const m = url.match(/(?:id=|\/d\/)([a-zA-Z0-9_-]{10,})/);
+        if (m) url = 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w1200';
         return { url, date: r.c[1] ? r.c[1].v.trim() : '' };
       });
   }
@@ -328,66 +194,35 @@
 
   function loadQueue() {
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (saved && saved.total === photos.length && saved.queue.length > 0) {
-        return saved.queue;
-      }
+      const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (s && s.total === photos.length && s.queue.length > 0) return s.queue;
     } catch(e) {}
     return null;
   }
 
   function saveQueue() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        total: photos.length,
-        queue: queue
-      }));
-    } catch(e) {}
-  }
-
-  function buildQueue() {
-    queue = shuffle([...Array(photos.length).keys()]);
-    saveQueue();
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ total: photos.length, queue })); } catch(e) {}
   }
 
   function showPhoto(idx) {
     const photo = photos[idx];
     const inner = document.getElementById('photoInner');
     const stamp = document.getElementById('dateStamp');
-    const meta = document.getElementById('filmMeta');
-    const counter = document.getElementById('frameCounter');
-
     stamp.classList.remove('visible');
-
     let img = inner.querySelector('img');
-    if (!img) {
-      img = document.createElement('img');
-      img.className = 'loading';
-      inner.insertBefore(img, inner.firstChild);
-    }
-
+    if (!img) { img = document.createElement('img'); img.className = 'loading'; inner.insertBefore(img, inner.firstChild); }
     img.className = 'loading';
-    img.onload = () => {
-      img.className = '';
-      stamp.classList.add('visible');
-    };
-    img.onerror = () => {
-      img.className = '';
-    };
+    img.onload = () => { img.className = ''; stamp.classList.add('visible'); };
+    img.onerror = () => { img.className = ''; };
     img.src = photo.url;
-
     stamp.textContent = photo.date;
-    const seen = photos.length - queue.length;
-    counter.textContent = seen + ' / ' + photos.length;
-    meta.textContent = 'frame ' + String(seen).padStart(2, '0');
-
     const ls = document.getElementById('loadingState');
     if (ls) ls.remove();
   }
 
   function nextPhoto() {
-    if (photos.length === 0) return;
-    if (queue.length === 0) buildQueue();
+    if (!photos.length) return;
+    if (!queue.length) { queue = shuffle([...Array(photos.length).keys()]); }
     currentIndex = queue.pop();
     saveQueue();
     showPhoto(currentIndex);
@@ -396,17 +231,11 @@
   async function init() {
     try {
       photos = await fetchPhotos();
-      if (photos.length === 0) {
-        document.getElementById('loadingState').innerHTML =
-          '<div class="error-msg">no photos found<br>check your sheet</div>';
-        return;
-      }
-      const saved = loadQueue();
-      queue = saved || shuffle([...Array(photos.length).keys()]);
+      if (!photos.length) { document.getElementById('loadingState').innerHTML = '<div class="error-msg">no photos found<br>check your sheet</div>'; return; }
+      queue = loadQueue() || shuffle([...Array(photos.length).keys()]);
       nextPhoto();
     } catch(e) {
-      document.getElementById('loadingState').innerHTML =
-        '<div class="error-msg">couldn\'t load photos<br>check sheet is public</div>';
+      document.getElementById('loadingState').innerHTML = '<div class="error-msg">couldn\'t load photos<br>check sheet is public</div>';
     }
   }
 
